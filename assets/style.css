@@ -1,0 +1,142 @@
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"),
+      url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2)
+        format("woff2");
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+      U+FE2E-FE2F;
+  }
+::selection {
+    background: #fffba0;
+    color: #0d122b;
+}
+html {
+    background-color:#131418;
+}
+
+body {
+    margin-top: 50px;
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    font-style: normal;
+    color: #c7bebe;
+    line-height: 1.85;
+    font-stretch: normal;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.column {
+    float: left;
+  }
+  
+  .left, .right {
+    width: 20%;
+  }
+  
+  .middle {
+    width: 60%;
+  }
+
+  .container {
+    width:100%;
+    height: auto;
+    text-align:auto;
+    justify-content: center;
+    display: inline-flex;
+   }
+   .container > div {
+    width: auto;/*calc(100% / 5); */  
+    display: inline-flex;
+    justify-content: stretch;
+    text-align:center;  
+    padding:5px;
+   }
+  .dcc {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 16px;
+    
+  }
+    .input {
+        text-align: right;
+        border-radius: 5px;
+        display: flex;
+        overflow: auto;
+        width: 80px;
+        height: 30px;
+        background-color: rgba(128,128,128,0.1);
+        border: 1px solid rgba(128,128,128,0.1);  
+        color: #c7bebe;   
+    }
+
+    .dropdown {
+        display: flex;
+        border-radius: 5px;
+        width: 150px;
+        height: 30px;
+        text-align: left;
+    }
+    .dropdown .Select-control{
+        background-color: rgba(128,128,128,0.1) !important;
+        border: 1px solid rgba(128,128,128,0.1);
+      }
+      .dropdown .Select-menu-outer{
+            background-color: rgba(128,128,128,0.1);
+            border: 1px solid rgba(128,128,128,0.1);
+            position: absolute;
+            border-radius: 5px;
+        }
+       .dropdown .Select-value{
+            font-size: 14px;  
+            background-color: rgba(128,128,128,0.1);
+        } 
+        .dropdown .VirtualizedSelectOption  {
+            font-size: 14px;
+            background-color:#131418;
+            color: #c7bebe;
+            border-radius: 5px;
+        } 
+        .dropdown .VirtualizedSelectFocusedOption {
+            background-color: #fffba0;
+            color: #0d122b;
+        } 
+        .dropdown .Select-value-label {
+            color: #c7bebe !important;           
+        }
+        .dropdown:focus {
+            background-color: red;
+        }
+
+    .label {
+        font-size: auto;
+        text-align: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-overflow: clip;
+        white-space: nowrap;
+    }
+
+    .dash-table-container {
+        display: table-cell !important;
+        justify-content: stretch;
+        width: 100% !important;
+    }
+    .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner.dash-fill-width .cell table {
+        --hover: rgba(128,128,128,0.1);
+        border: 1px solid rgba(128,128,128,0.1);
+    }
+
+    .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+        background-color: rgba(128,128,128,0.1) !important;
+    }
+    .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+        background-color: inherit !important;
+    }
+
+
+  
