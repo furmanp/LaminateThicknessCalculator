@@ -1,9 +1,7 @@
-import dash
-from dash import Dash, html, dcc, Input, Output, State, dash_table, ctx
+from dash import Dash, dcc, Input, Output, State, callback_context
 import pandas as pd
 from main import *
 from layout import content_layout
-import os
 
 app = Dash(__name__, prevent_initial_callbacks=True)
 server = app.server
@@ -37,7 +35,7 @@ def update_df(submit, undo, material, weight, fvf, multiplier, resin_type, store
     else:
         df = pd.DataFrame(columns=['Ply no.', 'Material', 'Weight', 'Thickness'])
 
-    match ctx.triggered_id:
+    match callback_context.triggered_id:
         case 'add_ply':
             for i in range(multiplier):
                 new_entry = pd.DataFrame({'Ply no.': len(df) + 1,

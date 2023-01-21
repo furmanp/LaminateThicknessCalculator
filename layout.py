@@ -1,4 +1,4 @@
-from dash import dcc, dash_table, Dash, html
+from dash import dcc, dash_table, html
 
 resin_options = ['Epoxy', 'Polyester', 'Polyurethane', 'Vinylester']
 material_options = ['Glass Fiber E-type', 'Carbon Fiber', 'Aramid', 'Flux']
