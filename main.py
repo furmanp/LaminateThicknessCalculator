@@ -40,4 +40,3 @@ def resin_intake(fib_den, mat_den, fvf, lam_thk):
           f'resin fraction {resin_fraction} ')
 
     return round(lam_weight * resin_fraction, 2)
-
