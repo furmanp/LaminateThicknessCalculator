@@ -1,3 +1,4 @@
+import dash
 from dash import Dash, html, dcc, Input, Output, State, dash_table, ctx
 import pandas as pd
 from main import *
@@ -30,6 +31,7 @@ app.layout = content_layout
 
 )
 def update_df(submit, undo, material, weight, fvf, multiplier, resin_type, store_df):
+    fvf = 0.01 * fvf
     if store_df is not None:
         df = pd.read_json(store_df, orient='records')
     else:
@@ -45,22 +47,25 @@ def update_df(submit, undo, material, weight, fvf, multiplier, resin_type, store
                 df = pd.concat([df, new_entry])
         case 'undo_btn':
             df.drop(df.tail(1).index, inplace=True)
-
+    print(fvf)
     tot_thk = laminate_thk(df, 'Thickness')
     sfc_weight = aerial_weight(get_density(material), get_density(resin_type), fvf, tot_thk)
+    resin_cons = resin_intake(get_density(material), get_density(resin_type), fvf, tot_thk)
     return [df.to_json(orient='records'),
             df.to_dict(orient='records'),
             tot_thk,
             sfc_weight,
-            0]
+            resin_cons]
 
 
 @app.callback(
+    Output('download_table', 'data'),
     Input('export_btn', 'n_clicks'),
-    State('memory', 'data')
+    State('memory', 'data'),
 )
-def export_data(store_df):
-    return 0;
+def export_data(n_clicks, store_df):
+    df = pd.read_json(store_df, orient='records')
+    return dcc.send_data_frame(df.to_csv, "ply_table.csv")
 
 
 if __name__ == '__main__':

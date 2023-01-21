@@ -15,6 +15,8 @@ html {
 }
 
 body {
+    width: 100%;
+    height: 100%;
     margin-top: 50px;
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
@@ -29,6 +31,58 @@ body {
     box-sizing: border-box;
     position: relative;
 }
+.h1 {
+    text-align: center;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+.p {
+    margin: 5px;
+    padding-top: spacing-full - 25;
+    padding-bottom: spacing-full - 25;
+    text-align: left;
+}
+p::before {
+    content: " \00BB\0020";
+    color: #ff5277;
+    vertical-align: middle;
+}
+.side-note {
+    padding: 10px;
+    border: 1px solid rgba(128,128,128,0.1);  
+    border-radius: 5px;
+}
+  
+a:any-link {
+    font-family: 'Roboto', 'sans-serif';
+    color: #ff5277;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.85;
+    cursor: pointer;
+    font-stretch: normal;
+    font-feature-settings: "kern" 1;
+    font-kerning: normal;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    padding-left: 5px;
+} 
+a:any-link::after {
+    content: " \2197";
+    font-size: 14px;
+    line-height: 0;
+    position: relative;
+    bottom: 5px;
+    vertical-align: baseline;
+}
 
 .column {
     float: left;
@@ -40,6 +94,7 @@ body {
   
   .middle {
     width: 60%;
+    height: 90%;
   }
 
   .container {
@@ -50,7 +105,7 @@ body {
     display: inline-flex;
    }
    .container > div {
-    width: auto;/*calc(100% / 5); */  
+    width: auto;
     display: inline-flex;
     justify-content: stretch;
     text-align:center;  
@@ -108,9 +163,6 @@ body {
         .dropdown .Select-value-label {
             color: #c7bebe !important;           
         }
-        .dropdown:focus {
-            background-color: red;
-        }
 
     .label {
         font-size: auto;
@@ -124,18 +176,26 @@ body {
     .dash-table-container {
         display: table-cell !important;
         justify-content: stretch;
-        width: 100% !important;
+        width: 80% !important;
+        
     }
     .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner.dash-fill-width .cell table {
+        font-family: 'Roboto', 'sans-serif';
+        font-weight: 400;
+        font-size: 16px;
         --hover: rgba(128,128,128,0.1);
-        border: 1px solid rgba(128,128,128,0.1);
     }
 
     .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
         background-color: rgba(128,128,128,0.1) !important;
+        text-align: center;
     }
     .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
         background-color: inherit !important;
+        text-align: center;
+        font-family: 'Roboto', 'sans-serif';
+        font-weight: 400;
+        font-size: 16px;
     }
 
 

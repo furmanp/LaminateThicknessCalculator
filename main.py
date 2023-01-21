@@ -1,5 +1,5 @@
 def ply_thk(density, sfc_weight, fvf):
-    return round((sfc_weight / density * (1 + (100 - fvf) / fvf)) / 1000, 2)
+    return round((sfc_weight / density * (1 + (1 - fvf) / fvf) / 1000), 2)
 
 
 def laminate_thk(dataframe, column):
@@ -20,7 +20,6 @@ def get_density(material):
 
 
 def laminate_density(fib_den, mat_den, fvf):
-    fvf = 0.01 * fvf
     return round((fib_den * fvf) + (mat_den * (1 - fvf)), 2)
 
 
@@ -28,15 +27,17 @@ def aerial_weight(fib_den, mat_den, fvf, lam_thk):
     return round(laminate_density(fib_den, mat_den, fvf) * lam_thk, 2)
 
 
-# def get_fvf(process):
-#     fvf_dict = {
-#         'Hand Layup': 0.45,
-#         'Vacuum Inf.': 0.53,
-#         'Pre-preg': 0.56,
-#         'Resin Transfer Moulding': 0.55,
-#     }
-#     return fvf_dict.get(process)
+def volume_to_weight_fraction(fib_den, lam_den, fvf):
+    return round(fvf * (fib_den / lam_den), 2)
 
 
-if __name__ == '__main__':
-    pass
+def resin_intake(fib_den, mat_den, fvf, lam_thk):
+    lam_weight = aerial_weight(fib_den, mat_den, fvf, lam_thk)
+    lam_den = laminate_density(fib_den, mat_den, fvf)
+    resin_fraction = 1 - volume_to_weight_fraction(fib_den, lam_den, fvf)
+    print(f'laminate weight {lam_weight} ,'
+          f'laminate density {lam_den} '
+          f'resin fraction {resin_fraction} ')
+
+    return round(lam_weight * resin_fraction, 2)
+
