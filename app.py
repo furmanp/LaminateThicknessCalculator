@@ -4,6 +4,8 @@ from main import *
 from layout import content_layout
 
 app = Dash(__name__, prevent_initial_callbacks=True)
+app.title='Cured Ply Thickness Calculator'
+# app._favicon = ("assets/favicon.ico")
 server = app.server
 app.config.suppress_callback_exceptions = True
 app.css.config.serve_locally = True
