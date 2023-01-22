@@ -35,8 +35,5 @@ def resin_intake(fib_den, mat_den, fvf, lam_thk):
     lam_weight = aerial_weight(fib_den, mat_den, fvf, lam_thk)
     lam_den = laminate_density(fib_den, mat_den, fvf)
     resin_fraction = 1 - volume_to_weight_fraction(fib_den, lam_den, fvf)
-    print(f'laminate weight {lam_weight} ,'
-          f'laminate density {lam_den} '
-          f'resin fraction {resin_fraction} ')
 
     return round(lam_weight * resin_fraction, 2)

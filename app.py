@@ -35,17 +35,16 @@ def update_df(submit, undo, material, weight, fvf, multiplier, resin_type, store
     else:
         df = pd.DataFrame(columns=['Ply no.', 'Material', 'Weight', 'Thickness'])
 
-    match callback_context.triggered_id:
-        case 'add_ply':
-            for i in range(multiplier):
-                new_entry = pd.DataFrame({'Ply no.': len(df) + 1,
-                                          'Material': [material],
-                                          'Weight': [weight],
-                                          'Thickness': ply_thk(get_density(material), weight, fvf)})
-                df = pd.concat([df, new_entry])
-        case 'undo_btn':
-            df.drop(df.tail(1).index, inplace=True)
-    print(fvf)
+    if callback_context.triggered_id == 'add_ply':
+        for i in range(multiplier):
+            new_entry = pd.DataFrame({'Ply no.': len(df) + 1,
+                                      'Material': [material],
+                                      'Weight': [weight],
+                                      'Thickness': ply_thk(get_density(material), weight, fvf)})
+            df = pd.concat([df, new_entry])
+    elif callback_context.triggered_id == 'undo_btn':
+        df.drop(df.tail(1).index, inplace=True)
+
     tot_thk = laminate_thk(df, 'Thickness')
     sfc_weight = aerial_weight(get_density(material), get_density(resin_type), fvf, tot_thk)
     resin_cons = resin_intake(get_density(material), get_density(resin_type), fvf, tot_thk)
